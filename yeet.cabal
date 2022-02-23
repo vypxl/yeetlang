@@ -1,0 +1,64 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           yeet
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/vypxl/yeetlang>
+homepage:       https://github.com/vypxl/yeetlang#readme
+bug-reports:    https://github.com/vypxl/yeetlang/issues
+author:         vypxl
+maintainer:     thomas@vypxl.io
+copyright:      2021 vypxl
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    spec.md
+
+source-repository head
+  type: git
+  location: https://github.com/vypxl/yeetlang
+
+library
+  exposed-modules:
+      Yeet.Parser
+  other-modules:
+      Paths_yeet
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , megaparsec
+  default-language: Haskell2010
+
+executable yeet
+  main-is: Main.hs
+  other-modules:
+      Paths_yeet
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , megaparsec
+    , yeet
+  default-language: Haskell2010
+
+test-suite yeet-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_yeet
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hspec
+    , megaparsec
+    , yeet
+  default-language: Haskell2010

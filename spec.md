@@ -6,16 +6,16 @@ Yeet is a beautifully simple functional language based on the ingenious [lambda 
 
 In yeet, only the following symbols are needed to write code, everything else (whitespace, other characters or invalid keywords/identifiers) are unnecessary and can thus be used as comments, if the programmer fears their inability to compoehend their own code the day after.
 
-- yeet: `yeet` is the only reserved keyword in **yeet**. It is used in function declarations.
+- yeet: `yeet` and `YEET` are the only reserved keywords in **yeet**. They are used in function declarations.
 - identifiers: `yee..et` (more than 2 e's) are **yeet** identifiers.
-- numbers: `YEeEeEet` (capital `Y`, then `e` or `E` for binary `0` and `1`) may be used as a shorthand for numbers, if the programmer whishes to shorten his sophisticated arithmetic code. These literals must contain at least two `e`'s or `E`'s, so to represent a 0 would be `Yeet` and a 1 would be `YeEt`.
+- numbers: `YEeEeEet` (capital `Y`, then `e` or `E` for binary `0` and `1` and a final `t`) may be used as a shorthand for numbers, if the programmer whishes to shorten his sophisticated arithmetic code. These literals must contain at least two `e`'s or `E`'s, so to represent a 0 would be `Yeet` and a 1 would be `YeEt`.
 
-A function definition in **yeet** starts with `yeet` and is followed by zero or more identifiers (the function parameters), then another `yeet`, then the function body and finally a closing `yeet`.
+A function definition in **yeet** starts with `yeet` and is followed by zero or more identifiers (the function parameters), then another `yeet`, then the function body (a function call) and finally a closing `YEET`.
 
 Functions are [curried](https://en.wikipedia.org/wiki/Currying) by default.
 
 ```yeet
-yeet <parameters> yeet <body> yeet
+yeet <parameters> yeet <body> YEET
 ```
 
 To call a function, put its identifier followed by its arguments.
@@ -25,36 +25,36 @@ To call a function, put its identifier followed by its arguments.
 A binary function that evaulates to its first argument:
 
 ```yeet
-yeet yeeet yeeeet yeet yeeet yeet
+yeet yeeet yeeeet yeet yeeet YEET
 ```
 
 A  binary function that evaulates to its second argument:
 
 ```yeet
-yeet yeeet yeeeet yeet yeeeet yeet
+yeet yeeet yeeeet yeet yeeeet YEET
 ```
 
-A binary function that calls its first parameter with its second parameter:
+A binary function that calls its first parameter with its second parameter as an argument:
 
 ```yeet
-yeet yeeet yeeeet yeet yeeet yeeeet yeet
+yeet yeeet yeeeet yeet yeeet yeeeet YEET
 ```
 
-A unary function that calls its first parameter with the number 2:
+A unary function that calls its first parameter with the number 2 as an argument:
 
 ```yeet
-yeet yeeet yeet yeeet YEet yeet
+yeet yeeet yeet yeeet YEet YEET
 ```
 
 Note again that the whitespace (and other text not forming an uninterrupted yeet) is optional, the following code has the same meaning as the first example:
 
 ```yeet
-yeetyeeetyeeeetyeetyeeetyeet
+yeetyeeetyeeeetyeetyeeetYEET
 ```
 
 ## Semantics
 
-In **yeet**, everything is a function. There are no variables, no statements, no mutability. Only functions. Every valid **yeet** expression is a function call. In such a function call, one function is applied to its parameters. If the programmer wanted to somehow compute some of the parameters, they must encapsulate their logic into a function without parameters.
+In **yeet**, everything is a function. There are no variables, no statements, no mutability. Only functions. Every valid **yeet** expression is a function call. In such a function call, one function is applied to its arguments. If the programmer wanted to somehow compute some of the arguments, they must encapsulate their logic into a function without parameters.
 
 A **yeet** program is a function. A valid **yeet** program is a function that takes a parameter as input and evaluates a function as output. Both of these functions must be 'lists' as defined below in **conventions**.
 
@@ -71,10 +71,10 @@ The conventions explained in the following sections were adopted from the [lambd
 Numbers in **yeet** are defined like the Church Numerals. As there are no parenthesis in **yeet**, the programmer may use functions without parameters to encapsulate expressions.
 
 ```yeet
-0 = Yeet = yeet yeeet yeeeet yeet yeeeet yeet
-1 = YeEt = yeet yeeet yeeeet yeet yeeet yeeeet yeet
-2 = YEet = yeet yeeet yeeeet yeet yeeet yeet yeet yeeet yeeeet yeet yeet
-3 = YEEt = yeet yeeet yeeeet yeet yeeet yeet yeet yeeet yeet yeet yeeet yeeeet yeet yeet yeet
+0 = Yeet = yeet yeeet yeeeet yeet yeeeet YEET
+1 = YeEt = yeet yeeet yeeeet yeet yeeet yeeeet YEET
+2 = YEet = yeet yeeet yeeeet yeet yeeet yeet yeet yeeet yeeeet YEET YEET
+3 = YEEt = yeet yeeet yeeeet yeet yeeet yeet yeet yeeet yeet yeet yeeet yeeeet YEET YEET YEET
 ...
 ```
 
@@ -82,12 +82,12 @@ Numbers in **yeet** are defined like the Church Numerals. As there are no parent
 
 To define a linked list in yeet, some building blocks are needed:
 
-- TRUE:   `yeet yeeet yeeeet yeet yeeet yeet` (Returns its first argument)
-- FALSE:  `yeet yeeet yeeeet yeet yeeeet yeet` (Returns its second argument)
-- PAIR:   `yeet yeeet yeeeet yeeeeet yeet yeeeeet yeeeet yeeet yeet`
-- FIRST:  `yeet yeeet yeet yeeet TRUE yeet`
-- SECOND: `yeet yeeet yeet yeeet FALSE yeet`
-- NIL:    `yeet yeeet yeet TRUE yeet`
+- TRUE:   `yeet yeeet yeeeet yeet yeeet YEET` (Returns its first argument)
+- FALSE:  `yeet yeeet yeeeet yeet yeeeet YEET` (Returns its second argument)
+- PAIR:   `yeet yeeet yeeeet yeeeeet yeet yeeeeet yeeeet yeeet YEET`
+- FIRST:  `yeet yeeet yeet yeeet TRUE YEET`
+- SECOND: `yeet yeeet yeet yeeet FALSE YEET`
+- NIL:    `yeet yeeet yeet TRUE YEET`
 
 A pair would now be `PAIR <first> <second>`.
 
@@ -99,7 +99,7 @@ Note that, in this paragraph, I substituted the actual functions with names to m
 
 A yeet program must be a function returning a list of numbers.
 
-The programmer may feel the need to bind often used functions to descriptive names. Such superflous features obviously do not exist in yeet. Instead, the programmer can write a function receiving the function to bind as a parameter:
+The programmer may feel the need to bind often used functions to descriptive names. Such superflous features obviously do not exist in yeet. Instead, the programmer can write a function receiving the function to bind as an argument:
 
 ```yeet
 Suppose we wanted to write a yeet program that returns its input
@@ -110,8 +110,7 @@ Here is an example of how this could be accomplished.
 yeet yeeet < this is the input yeet
   yeet yeeeet < this will be SECOND yeet
     yeeeet yeeeet yeeet
-  yeet We now put the definition of SECOND: 
-    yeet yeeeet yeet yeeeet yeet yeeeeet yeeeeeet yeet yeeeeeet yeet yeet
-yeet
+  YEET We now put the definition of SECOND: 
+    yeet yeeeet yeet yeeeet yeet yeeeeet yeeeeeet yeet yeeeeeet YEET YEET
+YEET
 ```
-
